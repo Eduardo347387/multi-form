@@ -14,7 +14,20 @@
     --White: hsl(0, 0%, 100%);
 }
 
-body{
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
 }
 
+.title{
+    color: var(--Marine_blue);
+    font-weight: 700;
+    opacity: 0.9;
+}
+.paragraph{
+    color: var(--Cool_gray);
+    font-weight: 400;
+}

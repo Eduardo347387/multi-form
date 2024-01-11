@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'multi-form';
+  formularioActual:number = 1;
+  siguientePaso() {
+    // Lógica para determinar el próximo formulario
+    this.formularioActual++;
+    // Puedes agregar lógica adicional aquí según tus necesidades
+  }
 }

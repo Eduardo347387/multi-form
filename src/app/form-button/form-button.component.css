@@ -1,0 +1,12 @@
+.form-button {
+  position: absolute;
+  right: 0;
+  transform: translateY(8.5rem);
+  background-color: var(--Marine_blue);
+  border: none;
+  width: 8rem;
+  height: 2.6rem;
+  border-radius: 0.4rem;
+  color: var(--Magnolia);
+  font-weight: 500;
+}/*# sourceMappingURL=form-button.component.css.map */

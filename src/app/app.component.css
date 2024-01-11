@@ -1,1 +1,63 @@
-/*# sourceMappingURL=app.component.css.map */
+.container {
+  max-width: 60rem;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.container .container-form {
+  height: 36.7rem;
+  width: 100%;
+  background-color: var(--Magnolia);
+}
+.container .container-form .conteiner-sidebar {
+  display: flex;
+  justify-content: center;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  padding-top: 2.5rem;
+  background-image: url(../assets/images/bg-sidebar-mobile.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 11rem;
+}
+.container .container-form .conteiner-sidebar .box-step {
+  display: flex;
+}
+.container .container-form .conteiner-sidebar .box-step .number-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  border: 1px solid var(--Magnolia);
+  color: var(--White);
+  font-size: 1rem;
+  font-weight: 500;
+}
+.container .container-form .conteiner-sidebar .box-step .text-step {
+  display: none;
+}
+.container .container-form .view-form {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -4.1rem);
+  width: 90%;
+  background-color: var(--White);
+  border-radius: 0.8rem;
+  padding: 1.8rem 1.5rem;
+  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.2);
+}
+.container .container-form .view-form .form-button {
+  position: absolute;
+  right: 0;
+  transform: translateY(8.5rem);
+  background-color: var(--Marine_blue);
+  border: none;
+  width: 8rem;
+  height: 2.6rem;
+  border-radius: 0.4rem;
+  color: var(--Magnolia);
+  font-weight: 500;
+}/*# sourceMappingURL=app.component.css.map */
