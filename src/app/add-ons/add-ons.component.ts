@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-ons.component.scss']
 })
 export class AddOnsComponent {
-
+  serviciovalue1: number = 1;
+  serviciovalue2: number = 2;
 }

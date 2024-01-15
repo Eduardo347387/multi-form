@@ -23,11 +23,29 @@
 }
 
 .title{
+    font-size: 1.6rem;
     color: var(--Marine_blue);
     font-weight: 700;
     opacity: 0.9;
 }
 .paragraph{
+    font-size: 1rem;
     color: var(--Cool_gray);
     font-weight: 400;
+}
+
+.height-complete{
+    height: 100%;
+}
+
+
+.title-option{
+    color: var(--Marine_blue);
+    font-size: .94rem;
+    font-weight: 700;
+}
+.subtitle-option{
+    display: block;
+    font-size: .8rem;
+    color: var(--Cool_gray);
 }

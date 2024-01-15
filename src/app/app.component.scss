@@ -4,8 +4,7 @@
     margin: 0;
     position: relative;
     .container-form{
-        height: 36.7rem;
-        width: 100%;
+        height:max-content;
         background-color: var(--Magnolia);
         .conteiner-sidebar{
             display: flex;
@@ -32,32 +31,69 @@
                     font-weight: 500;
 
                 }
+                .active {
+                    background-color: var(--Light_blue);
+                    color: var(--Marine_blue);
+                    border: none;
+                }
                 .text-step{
                     display: none;
                 }
+
             }
         }
         .view-form{
-            position: absolute;
+            position: relative;
+            top: -4.6rem;
             left: 50%;
-            transform: translate(-50%,-4.1rem);
+            transform: translateX(-50%);
             width: 90%;
             background-color: var(--White);
             border-radius: .8rem;
             padding: 1.8rem 1.5rem;
-            box-shadow: 0 0 4rem rgb(0,0,0,0.2);
-            .form-button{
-                position: absolute;
-                right: 0;
-                transform: translateY(8.5rem);
-                background-color: var(--Marine_blue);
-                border: none;
-                width: 8rem;
-                height: 2.6rem;
-                border-radius: .4rem;
-                color: var(--Magnolia);
-                font-weight: 500;
+            box-shadow: 0 0 4rem rgb(0,0,0,0.2);   
+            .container-thank{
+                padding: 2rem 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .image{
+                    width: 5rem;
+                    height: 5rem;
+                    margin-bottom: .8rem;
+                }
+                .paragraph{
+                    text-align: center;
+                }
             }
+        }
+    }
+    .container-buttons{
+        position: relative;
+        margin-top: 1rem;
+        .form-button-next,.form-button-black{
+            border: none;
+            font-size: 1rem;
+            font-weight: 500
+        }
+        .form-button-next{
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--Marine_blue);
+            width: 8rem;
+            height: 2.6rem;
+            border-radius: .4rem;
+            color: var(--Magnolia); 
+            margin-right: 1rem;        
+        }
+        .form-button-black{
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: var(--Cool_gray);
+            background-color: transparent;
+            margin-left: 1rem;
         }
     }
 }

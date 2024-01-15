@@ -1,47 +1,73 @@
 
   <main class="container">
-    <!-- Sidebar start -->
     <div class="container-form">
+      <!-- Sidebar start -->
       <div class="conteiner-sidebar">
         <div class="box-step">
-          <div class="number-step">1</div>
+          <div class="number-step" [ngClass]="{'active':formularioActual === 1}">1</div>
           <p class="text-step">Step 1
             <span class="info"> Your info</span>
           </p>
         </div>
 
         <div class="box-step">
-          <div class="number-step">2</div>
+          <div class="number-step" [ngClass]="{'active':formularioActual === 2}">2</div>
           <p class="text-step">Step 2
             <span class="info">Select plan</span>
           </p>
         </div>
 
         <div class="box-step">
-          <div class="number-step">3</div>
+          <div class="number-step" [ngClass]="{'active':formularioActual === 3}">3</div>
           <p class="text-step">Step 3
             <span class="info">Add-ons</span>
           </p>
         </div>
 
         <div class="box-step">
-          <div class="number-step">4</div>
+          <div class="number-step" [ngClass]="{'active':formularioActual === 4 || formularioActual === 5}">4</div>
           <p class="text-step">Step 4
-            <span class="info">Summary </span>
+            <span class="info">Summary</span>
           </p>
         </div>
       </div>
-
+      <!-- Sidebar end -->
       <div class="view-form">
         <ng-container [ngSwitch]="formularioActual">
           <app-your-info *ngSwitchCase="1"/>
           <app-select-plan *ngSwitchCase="2"/>
+          <app-add-ons *ngSwitchCase="3"/>
+          <app-summary *ngSwitchCase="4"/>
+
+          <div class="container-thank" *ngSwitchCase="5">
+            <ng-container *ngIf="sniper">
+              <div class="spinner-border text-primary" role="status">
+              </div>
+              <p class="title">Processing...</p>
+            </ng-container>
+
+            <ng-container *ngIf="formEnd">
+              <img class="image" src="../assets/images/icon-thank-you.svg" alt="icon-thank-you">
+              <p class="title">Thank you!</p>
+              <p class="paragraph">Thank you for confirming your subscription!
+              We hope you have fun using our
+              platform. If you ever need support, please
+              feel free to mail us at <span class="gmail">support@loremgaming.com</span></p>
+            </ng-container>
+          </div>
         </ng-container>
-        <button class="form-button" (click)="siguientePaso()">Next Step</button>
         <!-- <router-outlet></router-outlet>  -->
       </div>
     </div>
-    <!-- Sidebar end -->
+    <div class="container-buttons">
+      <ng-container *ngIf="formularioActual >=2 && formularioActual <= 4">
+          <button class="form-button-black" (click)="volver()">Go Black</button>
+      </ng-container>
+
+      <ng-container *ngIf="formularioActual <= 4">
+        <button class="form-button-next" (click)="siguientePaso()">Next Step</button>
+      </ng-container>
+    </div>
   </main>
  
 

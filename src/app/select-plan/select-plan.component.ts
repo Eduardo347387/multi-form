@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./select-plan.component.scss']
 })
 export class SelectPlanComponent {
-
+  arcade: number = 9;
+  Advanced: number = 12;
+  pro: number = 15;
 }
