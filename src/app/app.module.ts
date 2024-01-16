@@ -8,6 +8,7 @@ import { FormButtonComponent } from './form-button/form-button.component';
 import { SelectPlanComponent } from './select-plan/select-plan.component';
 import { AddOnsComponent } from './add-ons/add-ons.component';
 import { SummaryComponent } from './summary/summary.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SummaryComponent } from './summary/summary.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

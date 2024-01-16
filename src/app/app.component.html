@@ -34,7 +34,7 @@
       <!-- Sidebar end -->
       <div class="view-form">
         <ng-container [ngSwitch]="formularioActual">
-          <app-your-info *ngSwitchCase="1"/>
+          <app-your-info *ngSwitchCase="1" (statusFormulario)="recibirStatus($event)"/>
           <app-select-plan *ngSwitchCase="2"/>
           <app-add-ons *ngSwitchCase="3"/>
           <app-summary *ngSwitchCase="4"/>
