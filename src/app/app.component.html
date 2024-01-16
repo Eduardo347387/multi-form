@@ -79,29 +79,32 @@
 						<img class="icon" src="../../assets/images/icon-arcade.svg" alt="icon">
 						<div class="option-text">
 							<span class="title-option">Arcate</span>
-							<span class="subtitle-option">{{arcade | currency}}/mo</span>
+							<span class="subtitle-option">${{arcade}}/{{plazo}}</span>
+							<span class="subtitle-option color-monthy" *ngIf="displayMes">2 months free</span>
 						</div>
 					</div>
 					<div class="option">
 						<img class="icon" src="../../assets/images/icon-advanced.svg" alt="icon">
 						<div class="option-text">
 							<span class="title-option">Advanced</span>
-							<span class="subtitle-option">{{Advanced | currency}}/mo</span>
+							<span class="subtitle-option">${{Advanced}}/{{plazo}}</span>
+							<span class="subtitle-option color-monthy" *ngIf="displayMes">2 months free</span>
 						</div>
 					</div>
 					<div class="option">
 						<img class="icon" src="../../assets/images/icon-pro.svg" alt="icon">
 						<div class="option-text">
 							<span class="title-option">Pro</span>
-							<span class="subtitle-option">{{pro | currency}}/mo</span>
+							<span class="subtitle-option">${{pro}}/{{plazo}}</span>
+							<span class="subtitle-option color-monthy" *ngIf="displayMes">2 months free</span>
 						</div>
 					</div>
 				</div>
 				<div class="continer-option-check">
 					<p class="option-check">Monthly</p>
 					<div class="form-check form-switch">
-						<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-					</div>
+						<input (change)="timePlan($event)"class="form-check-input" [(ngModel)]="isChecked" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+					</div>	
 					<p class="option-check">yearly</p>
 				</div>
 			</section>
@@ -118,7 +121,7 @@
 							<span class="title-option">Online service</span>
 							<span class="subtitle-option">Access to multiplayer games</span>
 						</div>
-						<p class="number-monthy">{{serviciovalue1 | currency:'+$'}}/mo</p>
+						<p class="number-monthy">+${{onlineServicio}}/{{plazo1}}</p>
 					</div>
 			
 					<div class="box-option">
@@ -127,7 +130,7 @@
 							<span class="title-option">Larger storage</span>
 							<span class="subtitle-option">Extra 1TB of clound save</span>
 						</div>
-						<p class="number-monthy">{{serviciovalue2 | currency:'+$'}}/mo</p>
+						<p class="number-monthy">+${{LargerStorage}}/{{plazo1}}</p>
 					</div>
 			
 					<div class="box-option">
@@ -136,7 +139,7 @@
 							<span class="title-option">Customizable profile</span>
 							<span class="subtitle-option">Custom theme on your profile</span>
 						</div>
-						<p class="number-monthy">{{serviciovalue2 | currency:'+$'}}/mo</p>
+						<p class="number-monthy">+${{CustomizableProfile}}/{{plazo1}}</p>
 					</div>
 				</div>
 			</section>

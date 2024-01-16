@@ -88,10 +88,19 @@
                         border: 1px solid var(--Light_gray);
                         border-radius: .4rem;
                         padding: 1rem .8rem;
-            
+                        &:hover {
+                            cursor: pointer;
+                            border: 1px solid hsla(243, 100%, 62%, 0.606);
+                        }
                         .icon {
                             width: 2.3rem;
                             height: 2.3rem;
+                        }
+                        .option-text{
+                            .color-monthy{
+                                font-size: .7rem;
+                                color: var(--Marine_blue);
+                            }
                         }
                     }
                 }
