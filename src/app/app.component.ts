@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { YourInfoComponent } from './your-info/your-info.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-root',
@@ -7,40 +6,63 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  formularioActual: number = 1;
-  sniper: boolean = false;
-  formEnd: boolean = false
-  statusForm?:boolean
-  siguientePaso() {
-    console.log(this.statusForm)
-    // Lógica para determinar el próximo formulario
-    if (this.statusForm && this.formularioActual === 1) {
-      this.formularioActual++;
-      return
-    }
-    else if(this.formularioActual === 2 || this.formularioActual === 3 || this.formularioActual === 4  ) {
-      this.formularioActual++;
-      return
-    } 
-    
-    // Puedes agregar lógica adicional aquí según tus necesidades    
-    
-    if (this.formularioActual === 5) {
-      console.log(this.formularioActual)
-      this.sniper = true
-      setTimeout(() => {
-        this.sniper = false
-        this.formEnd = true
-      },3000);
-    }
-  }
-  volver() {
-    this.formularioActual--
-  }
+	paso: number = 1;
 
-  recibirStatus(status: boolean) {
-    this.statusForm = status
-  }
+	// your form
+	formInfo: FormGroup
+
+	// select plan
+	arcade: number = 9;
+	Advanced: number = 12;
+	pro: number = 15;
+
+	// add-ons
+	serviciovalue1: number = 1;
+    serviciovalue2: number = 2;
+
+	// fin formulario
+	sniper: boolean = false;
+	formEnd: boolean = false
+	
+
+	constructor(private form: FormBuilder) { 
+		this.formInfo = this.form.group(
+		{
+		nombre: ['', [Validators.required,Validators.minLength(3)]],
+		gmail: ['', [Validators.required, Validators.email]],
+		numero: ['',[Validators.required,Validators.minLength(10)]],
+		})
+	} 
+
+	hasError(controlName: string, errorType: string) {
+		return this.formInfo.get(controlName)?.hasError(errorType) && this.formInfo.get(controlName)?.touched
+	}
+
+	valid(controlName: string) {
+		return this.formInfo.get(controlName)?.valid
+	}
+
+	siguientePaso() {
+		// Lógica para determinar el próximo formulario
+		
+		// Puedes agregar lógica adicional aquí según tus necesidades    
+		if (this.formInfo.valid) {
+			this.paso++
+		}
+
+		if (this.paso === 5) {
+		this.sniper = true
+		setTimeout(() => {
+			this.sniper = false
+			this.formEnd = true
+		},3000);
+		}
+	}
+	volver() {
+		this.paso--
+	}
+
+	
 
  
 }

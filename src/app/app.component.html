@@ -1,72 +1,210 @@
-
   <main class="container">
     <div class="container-form">
-      <!-- Sidebar start -->
-      <div class="conteiner-sidebar">
-        <div class="box-step">
-          <div class="number-step" [ngClass]="{'active':formularioActual === 1}">1</div>
-          <p class="text-step">Step 1
-            <span class="info"> Your info</span>
-          </p>
-        </div>
+		<!-- Sidebar start -->
+		<div class="conteiner-sidebar">
+			<div class="box-step">
+			<div class="number-step" [ngClass]="{'active':paso === 1}">1</div>
+			<p class="text-step">Step 1
+				<span class="info"> Your info</span>
+			</p>
+			</div>
 
-        <div class="box-step">
-          <div class="number-step" [ngClass]="{'active':formularioActual === 2}">2</div>
-          <p class="text-step">Step 2
-            <span class="info">Select plan</span>
-          </p>
-        </div>
+			<div class="box-step">
+			<div class="number-step" [ngClass]="{'active':paso === 2}">2</div>
+			<p class="text-step">Step 2
+				<span class="info">Select plan</span>
+			</p>
+			</div>
 
-        <div class="box-step">
-          <div class="number-step" [ngClass]="{'active':formularioActual === 3}">3</div>
-          <p class="text-step">Step 3
-            <span class="info">Add-ons</span>
-          </p>
-        </div>
+			<div class="box-step">
+			<div class="number-step" [ngClass]="{'active':paso === 3}">3</div>
+			<p class="text-step">Step 3
+				<span class="info">Add-ons</span>
+			</p>
+			</div>
 
-        <div class="box-step">
-          <div class="number-step" [ngClass]="{'active':formularioActual === 4 || formularioActual === 5}">4</div>
-          <p class="text-step">Step 4
-            <span class="info">Summary</span>
-          </p>
-        </div>
-      </div>
-      <!-- Sidebar end -->
-      <div class="view-form">
-        <ng-container [ngSwitch]="formularioActual">
-          <app-your-info *ngSwitchCase="1" (statusFormulario)="recibirStatus($event)"/>
-          <app-select-plan *ngSwitchCase="2"/>
-          <app-add-ons *ngSwitchCase="3"/>
-          <app-summary *ngSwitchCase="4"/>
+			<div class="box-step">
+			<div class="number-step" [ngClass]="{'active':paso === 4 || paso === 5}">4</div>
+			<p class="text-step">Step 4
+				<span class="info">Summary</span>
+			</p>
+			</div>
+		</div>
+		<!-- Sidebar end -->
+		<div class="view-form">
+			<section class="seccion-your-info" *ngIf="paso === 1">
+				<h1 class="title">Personal info</h1>
+				<p class="paragraph">Please provide your name, email address, and phone number.</p>
+				<form [formGroup]="formInfo">
+				<div class="mb-3">
+					<div class="container-text">
+					<label for="exampleInputEmail1" class="label-text">Name</label>
+					<div class="text-danger" *ngIf="hasError('nombre','minlength')">requires minimum 3 characters</div>
+					<div class="text-danger" *ngIf="hasError('nombre','required')">This field is requeied</div>
+					</div>
+					<input [ngClass]="{'is-invalid':hasError('nombre','required')}" [ngClass]="{'is-valid':valid('nombre')}"
+					type="text" class="form-control" id="exampleInputEmail1" placeholder="e.g. Stephen King"
+					formControlName="nombre">
+				</div>
+				<div class="mb-3">
+					<div class="container-text">
+					<label for="exampleInputEmail1" class="label-text">Email address</label>
+					<div class="text-danger" *ngIf="hasError('gmail','required')">This field is requeied</div>
+					<div class="text-danger" *ngIf="hasError('gmail','email')">Email invalid</div>
+					</div>
+					<input [ngClass]="{'is-invalid':hasError('gmail','required') || hasError('gmail','email')}"
+					[ngClass]="{'is-valid':valid('gmail')}" type="email" class="form-control" id="exampleInputEmail1"
+					placeholder="e.g. stephenking@lorem.com" formControlName="gmail">
+				</div>
+				<div class="mb-3">
+					<div class="container-text">
+					<label for="exampleInputEmail1" class="label-text">Phone Number</label>
+					<div class="text-danger" *ngIf="hasError('numero','required')">This field is requeied</div>
+					<div class="text-danger" *ngIf="hasError('numero','minlength')">requires minimum 10 characters</div>
+					</div>
+					<input [ngClass]="{'is-invalid':hasError('numero','required')}" [ngClass]="{'is-valid':valid('numero')}"
+					type="text" class="form-control" id="exampleInputEmail1" placeholder="e.g. +1 234 567 890"
+					formControlName="numero">
+				</div>
+				</form>
+			</section>
+		
+			<section class="seccion-select-plan" *ngIf="paso === 2">
+				<h1 class="title">Selec your plan</h1>
+				<p class="paragraph">Your have the option of monthly or
+					yearly billing.
+				</p>
+				<div class="container-option">
+					<div class="option">
+						<img class="icon" src="../../assets/images/icon-arcade.svg" alt="icon">
+						<div class="option-text">
+							<span class="title-option">Arcate</span>
+							<span class="subtitle-option">{{arcade | currency}}/mo</span>
+						</div>
+					</div>
+					<div class="option">
+						<img class="icon" src="../../assets/images/icon-advanced.svg" alt="icon">
+						<div class="option-text">
+							<span class="title-option">Advanced</span>
+							<span class="subtitle-option">{{Advanced | currency}}/mo</span>
+						</div>
+					</div>
+					<div class="option">
+						<img class="icon" src="../../assets/images/icon-pro.svg" alt="icon">
+						<div class="option-text">
+							<span class="title-option">Pro</span>
+							<span class="subtitle-option">{{pro | currency}}/mo</span>
+						</div>
+					</div>
+				</div>
+				<div class="continer-option-check">
+					<p class="option-check">Monthly</p>
+					<div class="form-check form-switch">
+						<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+					</div>
+					<p class="option-check">yearly</p>
+				</div>
+			</section>
 
-          <div class="container-thank" *ngSwitchCase="5">
-            <ng-container *ngIf="sniper">
-              <div class="spinner-border text-primary" role="status">
-              </div>
-              <p class="title">Processing...</p>
-            </ng-container>
+			<section class="seccion-add-ons" *ngIf="paso === 3">
+				<h1 class="title">Pick add-ons</h1>
+				<p class="paragraph">Add-ons help enhance your
+					gaming experience</p>
+			
+				<div class="container-options">
+					<div class="box-option">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+						<div class="option-text">
+							<span class="title-option">Online service</span>
+							<span class="subtitle-option">Access to multiplayer games</span>
+						</div>
+						<p class="number-monthy">{{serviciovalue1 | currency:'+$'}}/mo</p>
+					</div>
+			
+					<div class="box-option">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+						<div class="option-text">
+							<span class="title-option">Larger storage</span>
+							<span class="subtitle-option">Extra 1TB of clound save</span>
+						</div>
+						<p class="number-monthy">{{serviciovalue2 | currency:'+$'}}/mo</p>
+					</div>
+			
+					<div class="box-option">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+						<div class="option-text">
+							<span class="title-option">Customizable profile</span>
+							<span class="subtitle-option">Custom theme on your profile</span>
+						</div>
+						<p class="number-monthy">{{serviciovalue2 | currency:'+$'}}/mo</p>
+					</div>
+				</div>
+			</section>
+			<section class="seccion-summary"  *ngIf="paso === 4">
+				<h1 class="title">Finishing up</h1>
+				<p class="paragraph">Double-check everything
+					looks OK before confirming
+				</p>
+			
+				<div class="container-subtotal">
+					<div class="box-subtotal">
+						<div class="option-text">
+							<span class="title-option">Arcade (Monthly)</span>
+							<span class="subtitle-option"><a href="#">Chage</a></span>
+						</div>
+						<p class="title-option center">$9/mo</p>
+					</div>
+			
+					<div class="box-subtotal">
+						<div class="option-text">
+							<span class="subtitle-option">Online service</span>
+						</div>
+						<p class="title-option center fontweight">$+1/mo</p>
+					</div>
+			
+					<div class="box-subtotal">
+						<div class="option-text">
+							<span class="subtitle-option">Larger storange</span>
+						</div>
+						<p class="title-option center fontweight">$+2/mo</p>
+					</div>
+				</div>
+			
+				<div class="container-total">
+					<div class="option-text">
+						<span class="subtitle-option">Total (per month)</span>
+					</div>
+					<p class="title-option">$+12/mo</p>
+				</div>
+			</section>
+			<div class="container-thank" *ngIf="paso === 5">
+				<ng-container *ngIf="sniper">
+				<div class="spinner-border text-primary" role="status">
+				</div>
+				<p class="title">Processing...</p>
+				</ng-container>
 
-            <ng-container *ngIf="formEnd">
-              <img class="image" src="../assets/images/icon-thank-you.svg" alt="icon-thank-you">
-              <p class="title">Thank you!</p>
-              <p class="paragraph">Thank you for confirming your subscription!
-              We hope you have fun using our
-              platform. If you ever need support, please
-              feel free to mail us at <span class="gmail">support@loremgaming.com</span></p>
-            </ng-container>
-          </div>
-        </ng-container>
-        <!-- <router-outlet></router-outlet>  -->
-      </div>
+				<ng-container *ngIf="formEnd">
+				<img class="image" src="../assets/images/icon-thank-you.svg" alt="icon-thank-you">
+				<p class="title">Thank you!</p>
+				<p class="paragraph">Thank you for confirming your subscription!
+				We hope you have fun using our
+				platform. If you ever need support, please
+				feel free to mail us at <span class="gmail">support@loremgaming.com</span></p>
+				</ng-container>
+
+			</div>
+			<!-- <router-outlet></router-outlet>  -->
+		</div>
     </div>
     <div class="container-buttons">
-      <ng-container *ngIf="formularioActual >=2 && formularioActual <= 4">
-          <button class="form-button-black" (click)="volver()">Go Black</button>
-      </ng-container>
+		<ng-container *ngIf="paso >=2 && paso <= 4">
+			<button class="form-button-black" (click)="volver()">Go Black</button>
+		</ng-container>
 
-      <ng-container *ngIf="formularioActual <= 4">
-        <button class="form-button-next" (click)="siguientePaso()">Next Step</button>
-      </ng-container>
+		<ng-container *ngIf="paso <= 4">
+			<button class="form-button-next" (click)="siguientePaso()">Next Step</button>
+		</ng-container>
     </div>
   </main>
  

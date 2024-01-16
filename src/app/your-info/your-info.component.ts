@@ -6,15 +6,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './your-info.component.html',
   styleUrls: ['./your-info.component.scss']
 })
-export class YourInfoComponent implements OnInit{
+export class YourInfoComponent{
   formInfo: FormGroup
-  name:string = ''
-  mail: string = ''
-  numeberPhone: string = ''
-  @Output() statusFormulario = new EventEmitter<boolean>();
-  
+
   constructor(private form: FormBuilder) { 
-  
+
     this.formInfo = this.form.group(
       {
       nombre: ['', [Validators.required,Validators.minLength(3)]],
@@ -22,11 +18,7 @@ export class YourInfoComponent implements OnInit{
       numero: ['',[Validators.required,Validators.minLength(10)]],
     })
   } 
-  ngOnInit(): void {
-    this.formInfo.valueChanges.subscribe(() => {
-        this.statusFormulario.emit(this.formInfo.valid)
-      })
-  }
+
   
 
 
