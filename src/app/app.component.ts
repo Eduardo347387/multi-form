@@ -7,9 +7,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AppComponent implements OnInit{	
 	// Creación de un arreglo de objetos
-	arregloDeObjetos: any[] = [
-		{ namePlan: 'Arcade', costo: 9 },
-		{},
+
+	plans = [
+		{ name: 'Arcade', price: 9, contrato: 'month'},
+		{ name: 'Advanced', price: 12, contrato: 'month'},
+		{ name: 'Pro', price: 15, contrato: 'month'} 
+	];
+
+	infoUser = [
+		{ namePlan: 'Arcade', costo: 9, contrato: 'month' },
+		{}
 	];
 
 	paso:number = 1
@@ -18,24 +25,13 @@ export class AppComponent implements OnInit{
 	formInfo: FormGroup
 
 	// select plan
-	nameArcade: string = 'Arcade'
-	nameAdvanced: string = 'Advanced'
-	namePro: string = 'Pro'
-	
-	priceArcade: number = 9;
-	priceAdvanced: number = 12;
-	pricePro: number = 15;
-
 	displayMes = false
-	plazo:string  = 'month'
 	isChecked: boolean = false;
 	opcionSeleccionada:number = 1
-	
 	// add-ons
 	onlineServicio: number = 1;
     LargerStorage: number = 2;
 	CustomizableProfile: number = 2
-	plazo1:string = 'mo'
 	// fin formulario
 	sniper: boolean = false;
 	formEnd: boolean = false
@@ -53,7 +49,7 @@ export class AppComponent implements OnInit{
 	
 
 	ngOnInit(): void {
-		// console.log(this.arregloDeObjetos[0].costo)
+		// console.log(this.infoUser[0].costo)
 	}
 
 	// FORMULARIO YOUR INFO
@@ -70,25 +66,28 @@ export class AppComponent implements OnInit{
 			//form-select-plan
 			this.isChecked = true;
 			this.displayMes = event.target.checked
-			this.plazo = 'year'
-			this.priceArcade = 90
-			this.priceAdvanced = 120
-			this.pricePro = 150
+			this.plans[0].price = 90
+			this.plans[1].price = 120
+			this.plans[2].price = 150
+			this.plans[0].contrato = 'year'
+			this.plans[1].contrato = 'year'
+			this.plans[2].contrato = 'year'
 			this.actualizarPlanes()
 			// form-pick-add-ons
-			this.plazo1 = 'yr'
 			this.onlineServicio = 10
 			this.LargerStorage = 20
 			this.CustomizableProfile = 20
 		} else {
 			//form-select-plan
 			this.displayMes = false
-			this.priceArcade = 9;
-			this.priceAdvanced = 12;
-			this.pricePro = 15;
+			this.plans[0].price = 9
+			this.plans[1].price = 12
+			this.plans[2].price = 15
+			this.plans[0].contrato = 'month'
+			this.plans[1].contrato = 'month'
+			this.plans[2].contrato = 'month'
 			this.actualizarPlanes()
 			// form-pick-add-ons
-			this.plazo1 = 'mo'
 			this.onlineServicio = 1
 			this.LargerStorage = 2
 			this.CustomizableProfile = 2
@@ -102,18 +101,30 @@ export class AppComponent implements OnInit{
 	}
 
 	actualizarPlanes(){
-		if (this.opcionSeleccionada === 1) {
-			this.arregloDeObjetos[0].namePlan = this.nameArcade;
-			this.arregloDeObjetos[0].costo = this.priceArcade;
+		const selectedPlan = this.plans[this.opcionSeleccionada - 1];
+		this.infoUser[0].namePlan = selectedPlan.name;
+		this.infoUser[0].costo = selectedPlan.price;
+		this.infoUser[0].contrato = selectedPlan.contrato
+	}
+
+	//Form Summary
+
+	obtenetContratoAbreviado(contrato: string | undefined): string {
+		if (contrato !== undefined) {
+			if (contrato === 'month') {
+				return 'mo'
+			} else if (contrato === 'year') {
+				return 'yr'
+			} else {
+			return contrato
+			}
+		} else {
+			return 'N/A'; 
 		}
-		if (this.opcionSeleccionada === 2) {
-			this.arregloDeObjetos[0].namePlan = this.nameAdvanced;
-			this.arregloDeObjetos[0].costo = this.priceAdvanced;
-		}
-		if (this.opcionSeleccionada === 3) {
-			this.arregloDeObjetos[0].namePlan = this.namePro;
-			this.arregloDeObjetos[0].costo = this.pricePro;
-		}
+	}
+
+	volvePaso2() {
+		this.paso = 2
 	}
 
 	siguientePaso() {

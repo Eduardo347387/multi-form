@@ -9,6 +9,7 @@ import { SelectPlanComponent } from './select-plan/select-plan.component';
 import { AddOnsComponent } from './add-ons/add-ons.component';
 import { SummaryComponent } from './summary/summary.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CapitalizeFirstLetterPipe } from './capitalize-first-letter.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormButtonComponent,
     SelectPlanComponent,
     AddOnsComponent,
-    SummaryComponent
+    SummaryComponent,
+    CapitalizeFirstLetterPipe
   ],
   imports: [
     BrowserModule,

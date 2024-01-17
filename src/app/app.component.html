@@ -78,24 +78,24 @@
 					<div class="option" (click)="selectPlan(1)" [ngClass]="{'opcionSeleccionada': opcionSeleccionada === 1}">
 						<img class="icon" src="../../assets/images/icon-arcade.svg" alt="icon">
 						<div class="option-text">
-							<span class="title-option">{{nameArcade}}</span>
-							<span class="subtitle-option">${{priceArcade}}/{{plazo}}</span>
+							<span class="title-option">{{plans[0].name}}</span>
+							<span class="subtitle-option">${{plans[0].price}}/{{plans[0].contrato}}</span>
 							<span class="subtitle-option color-monthy" *ngIf="displayMes">2 months free</span>
 						</div>
 					</div>
 					<div class="option" (click)="selectPlan(2)" [ngClass]="{'opcionSeleccionada': opcionSeleccionada === 2}">
 						<img class="icon" src="../../assets/images/icon-advanced.svg" alt="icon">
 						<div class="option-text">
-							<span class="title-option">{{nameAdvanced}}</span>
-							<span class="subtitle-option">${{priceAdvanced}}/{{plazo}}</span>
+							<span class="title-option">{{plans[1].name}}</span>
+							<span class="subtitle-option">${{plans[1].price}}/{{plans[0].contrato}}</span>
 							<span class="subtitle-option color-monthy" *ngIf="displayMes">2 months free</span>
 						</div>
 					</div>
 					<div class="option" (click)="selectPlan(3)" [ngClass]="{'opcionSeleccionada': opcionSeleccionada === 3}">
 						<img class="icon" src="../../assets/images/icon-pro.svg" alt="icon">
 						<div class="option-text">
-							<span class="title-option">{{namePro}}</span>
-							<span class="subtitle-option">${{pricePro}}/{{plazo}}</span>
+							<span class="title-option">{{plans[2].name}}</span>
+							<span class="subtitle-option">${{plans[2].price}}/{{plans[0].contrato}}</span>
 							<span class="subtitle-option color-monthy" *ngIf="displayMes">2 months free</span>
 						</div>
 					</div>
@@ -121,7 +121,7 @@
 							<span class="title-option">Online service</span>
 							<span class="subtitle-option">Access to multiplayer games</span>
 						</div>
-						<p class="number-monthy">+${{onlineServicio}}/{{plazo1}}</p>
+						<p class="number-monthy">+${{onlineServicio}}/{{obtenetContratoAbreviado(infoUser[0].contrato)}}</p>
 					</div>
 			
 					<div class="box-option">
@@ -130,7 +130,7 @@
 							<span class="title-option">Larger storage</span>
 							<span class="subtitle-option">Extra 1TB of clound save</span>
 						</div>
-						<p class="number-monthy">+${{LargerStorage}}/{{plazo1}}</p>
+						<p class="number-monthy">+${{LargerStorage}}/{{obtenetContratoAbreviado(infoUser[0].contrato)}}</p>
 					</div>
 			
 					<div class="box-option">
@@ -139,7 +139,7 @@
 							<span class="title-option">Customizable profile</span>
 							<span class="subtitle-option">Custom theme on your profile</span>
 						</div>
-						<p class="number-monthy">+${{CustomizableProfile}}/{{plazo1}}</p>
+						<p class="number-monthy">+${{CustomizableProfile}}/{{obtenetContratoAbreviado(infoUser[0].contrato)}}</p>
 					</div>
 				</div>
 			</section>
@@ -152,10 +152,10 @@
 				<div class="container-subtotal">
 					<div class="box-subtotal">
 						<div class="option-text">
-							<span class="title-option">{{arregloDeObjetos[0].namePlan}} (Monthly)</span>
-							<span class="subtitle-option"><a href="#">Chage</a></span>
+							<span class="title-option">{{infoUser[0].namePlan}} ({{infoUser[0].contrato | capitalizeFirstLetter}}ly)</span>
+							<span class="subtitle-option" (click)="volvePaso2()"><a href="#">Chage</a></span>
 						</div>
-						<p class="title-option center">${{arregloDeObjetos[0].costo}}/mo</p>
+						<p class="title-option center">${{infoUser[0].costo}}/{{obtenetContratoAbreviado(infoUser[0].contrato)}}</p>
 					</div>
 			
 					<div class="box-subtotal">
@@ -211,5 +211,4 @@
     </div>
   </main>
  
-
 
