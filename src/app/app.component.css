@@ -49,11 +49,132 @@
   top: -4.6rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
+  width: 93%;
   background-color: var(--White);
   border-radius: 0.8rem;
   padding: 1.8rem 1.5rem;
   box-shadow: 0 0 4rem rgba(0, 0, 0, 0.2);
+}
+.container .container-form .view-form .seccion-your-info .label-text {
+  color: var(--Marine_blue);
+  font-size: 1rem;
+  font-weight: 400;
+}
+.container .container-form .view-form .seccion-your-info form .mb-3 .container-text {
+  display: flex;
+  align-items: center;
+}
+.container .container-form .view-form .seccion-your-info form .mb-3 .container-text .label-text {
+  flex: 1;
+}
+.container .container-form .view-form .seccion-your-info form .mb-3 .container-text .text-danger {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.container .container-form .view-form .seccion-select-plan .container-option {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+.container .container-form .view-form .seccion-select-plan .container-option .option {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  border: 1px solid var(--Light_gray);
+  border-radius: 0.4rem;
+  padding: 1rem 0.8rem;
+}
+.container .container-form .view-form .seccion-select-plan .container-option .option:hover {
+  cursor: pointer;
+  border: 1px solid hsla(243, 100%, 62%, 0.606);
+}
+.container .container-form .view-form .seccion-select-plan .container-option .option .icon {
+  width: 2.3rem;
+  height: 2.3rem;
+}
+.container .container-form .view-form .seccion-select-plan .container-option .option .option-text .color-monthy {
+  font-size: 0.7rem;
+  color: var(--Marine_blue);
+}
+.container .container-form .view-form .seccion-select-plan .container-option .opcionSeleccionada {
+  border: 1px solid hsla(243, 100%, 62%, 0.606);
+}
+.container .container-form .view-form .seccion-select-plan .continer-option-check {
+  margin-top: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  padding: 0.6rem 0;
+  background-color: hsla(206, 94%, 87%, 0.246);
+}
+.container .container-form .view-form .seccion-select-plan .continer-option-check .option-check {
+  margin: auto 0;
+  font-weight: 500;
+  color: var(--Marine_blue);
+}
+.container .container-form .view-form .seccion-add-ons .container-options {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.6rem;
+}
+.container .container-form .view-form .seccion-add-ons .container-options .box-option {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border: 1px solid var(--Light_gray);
+  border-radius: 0.4rem;
+  padding: 0.6rem 0.9rem;
+}
+.container .container-form .view-form .seccion-add-ons .container-options .box-option .form-check-input {
+  margin-right: 0.9rem;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.container .container-form .view-form .seccion-add-ons .container-options .box-option .option-text {
+  margin-right: 1rem;
+  flex: 1;
+}
+.container .container-form .view-form .seccion-add-ons .container-options .box-option .number-monthy {
+  margin: auto 0;
+  color: var(--Purplish_blue);
+  font-size: 0.83rem;
+}
+.container .container-form .view-form .seccion-summary .container-subtotal {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  background-color: hsla(243, 100%, 62%, 0.066);
+  border-radius: 0.3rem;
+  padding: 1.2rem 1rem;
+}
+.container .container-form .view-form .seccion-summary .container-subtotal .box-subtotal {
+  display: flex;
+}
+.container .container-form .view-form .seccion-summary .container-subtotal .box-subtotal .option-text {
+  flex: 1;
+}
+.container .container-form .view-form .seccion-summary .container-subtotal .box-subtotal .center {
+  margin: auto 0;
+}
+.container .container-form .view-form .seccion-summary .container-subtotal .box-subtotal .fontweight {
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+.container .container-form .view-form .seccion-summary .container-total {
+  margin-top: 1.4rem;
+  padding: 0 0.9rem;
+  display: flex;
+}
+.container .container-form .view-form .seccion-summary .container-total .option-text {
+  flex: 1;
+}
+.container .container-form .view-form .seccion-summary .container-total .title-option {
+  color: var(--Purplish_blue);
+  opacity: 0.9;
 }
 .container .container-form .view-form .container-thank {
   padding: 2rem 0;
