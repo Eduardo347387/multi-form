@@ -116,30 +116,36 @@
 			
 				<div class="container-options">
 					<div class="box-option">
-						<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+						[(ngModel)]="statusChecks[0].check"
+						(change)="selectPick($event,1)">
 						<div class="option-text">
-							<span class="title-option">Online service</span>
+							<span class="title-option">{{pick_add_ons[0].name}}</span>
 							<span class="subtitle-option">Access to multiplayer games</span>
 						</div>
-						<p class="number-monthy">+${{onlineServicio}}/{{obtenetContratoAbreviado(infoUser[0].contrato)}}</p>
+						<p class="number-monthy">+${{pick_add_ons[0].price}}/{{obtenetContratoAbreviado(pick_add_ons[0].contrato)}}</p>
 					</div>
 			
 					<div class="box-option">
-						<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+						[(ngModel)]="statusChecks[1].check"
+						(change)="selectPick($event,2)">
 						<div class="option-text">
-							<span class="title-option">Larger storage</span>
+							<span class="title-option">{{pick_add_ons[1].name}}</span>
 							<span class="subtitle-option">Extra 1TB of clound save</span>
 						</div>
-						<p class="number-monthy">+${{LargerStorage}}/{{obtenetContratoAbreviado(infoUser[0].contrato)}}</p>
+						<p class="number-monthy">+${{pick_add_ons[1].price}}/{{obtenetContratoAbreviado(pick_add_ons[1].contrato)}}</p>
 					</div>
 			
 					<div class="box-option">
-						<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+						[(ngModel)]="statusChecks[2].check"
+						(change)="selectPick($event,3)">
 						<div class="option-text">
-							<span class="title-option">Customizable profile</span>
+							<span class="title-option">{{pick_add_ons[2].name}}</span>
 							<span class="subtitle-option">Custom theme on your profile</span>
 						</div>
-						<p class="number-monthy">+${{CustomizableProfile}}/{{obtenetContratoAbreviado(infoUser[0].contrato)}}</p>
+						<p class="number-monthy">+${{pick_add_ons[2].price}}/{{obtenetContratoAbreviado(pick_add_ons[2].contrato)}}</p>
 					</div>
 				</div>
 			</section>
@@ -152,32 +158,27 @@
 				<div class="container-subtotal">
 					<div class="box-subtotal">
 						<div class="option-text">
-							<span class="title-option">{{infoUser[0].namePlan}} ({{infoUser[0].contrato | capitalizeFirstLetter}}ly)</span>
+							<span class="title-option">{{infoUser[0].name}} ({{infoUser[0].contrato | capitalizeFirstLetter}}ly)</span>
 							<span class="subtitle-option" (click)="volvePaso2()"><a href="#">Chage</a></span>
 						</div>
-						<p class="title-option center">${{infoUser[0].costo}}/{{obtenetContratoAbreviado(infoUser[0].contrato)}}</p>
+						<p class="title-option center">${{infoUser[0].price}}/{{obtenetContratoAbreviado(infoUser[0].contrato)}}</p>
 					</div>
-			
-					<div class="box-subtotal">
-						<div class="option-text">
-							<span class="subtitle-option">Online service</span>
+					
+						<div class="box-subtotal" *ngFor="let pick of infoUser.slice(1)">
+							<div class="option-text">
+								<span class="subtitle-option">{{pick.name}}</span>
+							</div>
+							<p class="title-option center fontweight">$+{{pick.price}}/{{obtenetContratoAbreviado(pick.contrato)}}</p>
 						</div>
-						<p class="title-option center fontweight">$+1/mo</p>
-					</div>
 			
-					<div class="box-subtotal">
-						<div class="option-text">
-							<span class="subtitle-option">Larger storange</span>
-						</div>
-						<p class="title-option center fontweight">$+2/mo</p>
-					</div>
+					
 				</div>
 			
 				<div class="container-total">
 					<div class="option-text">
-						<span class="subtitle-option">Total (per month)</span>
+						<span class="subtitle-option">Total (per {{plans[0].contrato}})</span>
 					</div>
-					<p class="title-option">$+12/mo</p>
+					<p class="title-option">$+{{total}}/{{obtenetContratoAbreviado(plans[0].contrato)}}</p>
 				</div>
 			</section>
 			<div class="container-thank" *ngIf="paso === 5">

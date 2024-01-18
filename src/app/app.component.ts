@@ -14,13 +14,25 @@ export class AppComponent implements OnInit{
 		{ name: 'Pro', price: 15, contrato: 'month'} 
 	];
 
+	pick_add_ons = [
+		{ name: 'Online service', price: 1, contrato: 'month'},
+		{ name: 'Larger storage', price: 2, contrato: 'month'},
+		{ name: 'Customizable Profile', price: 2, contrato: 'month'}
+	]
+
 	infoUser = [
-		{ namePlan: 'Arcade', costo: 9, contrato: 'month' },
-		{}
+		{ name: 'Arcade', price: 9, contrato: 'month' }
 	];
 
-	paso:number = 1
+	statusChecks = [
+		{check: false },
+		{check: false },
+		{check: false}
+	]
 
+	//FORMULARIO GENERAL
+	paso:number = 1
+	
 	// your form
 	formInfo: FormGroup
 
@@ -29,13 +41,10 @@ export class AppComponent implements OnInit{
 	isChecked: boolean = false;
 	opcionSeleccionada:number = 1
 	// add-ons
-	onlineServicio: number = 1;
-    LargerStorage: number = 2;
-	CustomizableProfile: number = 2
 	// fin formulario
 	sniper: boolean = false;
 	formEnd: boolean = false
-	
+	total:number = 0
 	
 
 	constructor(private form: FormBuilder) { 
@@ -49,10 +58,12 @@ export class AppComponent implements OnInit{
 	
 
 	ngOnInit(): void {
-		// console.log(this.infoUser[0].costo)
+		this.statusChecks[0].check = true
+		this.infoUser = [...this.infoUser, this.pick_add_ons[0]]
+		this.sumaTotal()
 	}
 
-	// FORMULARIO YOUR INFO
+	// FORMULARIO 1 YOUR INFO
 	hasError(controlName: string, errorType: string) {
 		return this.formInfo.get(controlName)?.hasError(errorType) && this.formInfo.get(controlName)?.touched
 	}
@@ -60,7 +71,7 @@ export class AppComponent implements OnInit{
 		return this.formInfo.get(controlName)?.valid
 	}
 
-	// FORMULARIO SELECT-PLAN
+	// FORMULARIO 2 SELECT-PLAN
 	timePlan(event:any) {
 		if (event.target.checked) {
 			//form-select-plan
@@ -72,11 +83,12 @@ export class AppComponent implements OnInit{
 			this.plans[0].contrato = 'year'
 			this.plans[1].contrato = 'year'
 			this.plans[2].contrato = 'year'
-			this.actualizarPlanes()
 			// form-pick-add-ons
-			this.onlineServicio = 10
-			this.LargerStorage = 20
-			this.CustomizableProfile = 20
+			this.syncContrato()
+			this.pick_add_ons[0].price = 10
+			this.pick_add_ons[1].price = 20
+			this.pick_add_ons[2].price = 20
+
 		} else {
 			//form-select-plan
 			this.displayMes = false
@@ -86,29 +98,46 @@ export class AppComponent implements OnInit{
 			this.plans[0].contrato = 'month'
 			this.plans[1].contrato = 'month'
 			this.plans[2].contrato = 'month'
-			this.actualizarPlanes()
 			// form-pick-add-ons
-			this.onlineServicio = 1
-			this.LargerStorage = 2
-			this.CustomizableProfile = 2
+			this.syncContrato()
+			this.pick_add_ons[0].price = 1
+			this.pick_add_ons[1].price = 2
+			this.pick_add_ons[2].price = 2
+	
 		}
-		console.log(this.isChecked)
+		this.actualizarPlanes()
 	}
 
 	selectPlan(option: number) {
 		this.opcionSeleccionada = option
 		this.actualizarPlanes()
 	}
-
 	actualizarPlanes(){
 		const selectedPlan = this.plans[this.opcionSeleccionada - 1];
-		this.infoUser[0].namePlan = selectedPlan.name;
-		this.infoUser[0].costo = selectedPlan.price;
+		this.infoUser[0].name = selectedPlan.name;
+		this.infoUser[0].price = selectedPlan.price;
 		this.infoUser[0].contrato = selectedPlan.contrato
+		this.sumaTotal()
+	}
+
+	//Form Pick Add-Ons
+
+	selectPick(e:any, option: number) {
+		if (e.target.checked) {
+			this.statusChecks[option - 1].check = true
+			this.infoUser = [...this.infoUser, this.pick_add_ons[option - 1]]
+		} else {
+			this.infoUser = this.infoUser.filter(pick => pick !== this.pick_add_ons[option-1])
+		}
+		this.sumaTotal()
+	}
+	
+	syncContrato() {
+		const contratoValue = this.plans[0].contrato;
+		this.pick_add_ons.forEach(pick=> pick.contrato = contratoValue)
 	}
 
 	//Form Summary
-
 	obtenetContratoAbreviado(contrato: string | undefined): string {
 		if (contrato !== undefined) {
 			if (contrato === 'month') {
@@ -126,11 +155,13 @@ export class AppComponent implements OnInit{
 	volvePaso2() {
 		this.paso = 2
 	}
-
+	sumaTotal() {
+		this.total = this.infoUser.reduce((acumulador,product)=> acumulador + product.price,0)
+	}
 	siguientePaso() {
 		// Lógica para determinar el próximo formulario
 		
-		// Puedes agregar lógica adicional aquí según tus necesidades    
+		// Puedes agregar lógica adicional aquí según tus necesidades 
 		if (this.formInfo.valid) {
 			this.paso++
 		}
