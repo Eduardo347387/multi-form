@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./_syleMovile.scss','./_styleDesktop.scss']
+  styleUrls: ['./_syleMovile.scss', './_styleDesktop.scss']
 })
 export class AppComponent implements OnInit{	
 	// Creación de un arreglo de objetos
