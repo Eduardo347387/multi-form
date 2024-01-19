@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SelectPlanComponent } from './select-plan/select-plan.component';
 
-const routes: Routes = [
-  {path: 'selectplan',component:SelectPlanComponent},
 
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
