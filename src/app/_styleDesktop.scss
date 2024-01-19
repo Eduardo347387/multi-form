@@ -1,32 +1,23 @@
-.container{
-    max-width: 60rem;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    @import '../assets/css/styleForms/containerFormMovile';  
-}
+@media(min-width:766px) {
 
-@media(min-width:766px){
-    
-    .container{
+    .container {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         max-width: unset;
         min-height: 100vh;
-        border:1px solid;
+        border: 1px solid;
         background-color: var(--Magnolia);
-        padding:  3rem 0;
-
+        padding: 3rem 0;
         @import '../assets/css/styleForms/containerFormDesktop';
 
     }
 }
 
-@media(min-width:850px){
-    .container{
-        .container-form{
+@media(min-width:850px) {
+    .container {
+        .container-form {
             width: 60rem;
         }
     }
