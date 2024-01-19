@@ -1,0 +1,38 @@
+.seccion-add-ons {
+    .container-options {
+        display: flex;
+        flex-direction: column;
+        row-gap: .6rem;
+
+        .box-option {
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            border: 1px solid var(--Light_gray);
+            border-radius: .4rem;
+            padding: .6rem .9rem;
+
+            .form-check-input {
+                margin-right: .9rem;
+                width: 1.2rem;
+                height: 1.2rem;
+            }
+
+            .option-text {
+                margin-right: 1rem;
+                flex: 1;
+            }
+
+            .number-monthy {
+                margin: auto 0;
+                color: var(--Purplish_blue);
+                font-size: .83rem;
+            }
+        }
+        
+        .background-color-option {
+            background-color: hsla(206, 94%, 87%, 0.226);
+        }
+    }
+}

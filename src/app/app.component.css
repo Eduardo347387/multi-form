@@ -156,6 +156,9 @@
   color: var(--Purplish_blue);
   font-size: 0.83rem;
 }
+.container .container-form .view-form .seccion-add-ons .container-options .background-color-option {
+  background-color: hsla(206, 94%, 87%, 0.226);
+}
 .container .container-form .view-form .seccion-summary .container-subtotal {
   display: flex;
   flex-direction: column;
@@ -240,6 +243,9 @@
   color: var(--Cool_gray);
   background-color: transparent;
 }
+.container .container-form .view-form .container-buttons .form-button-black:hover {
+  color: var(--Marine_blue);
+}
 .container .container-form .view-form-background-color-transparend {
   background-color: transparent;
   box-shadow: none;
@@ -276,7 +282,7 @@
     height: 40rem;
     justify-content: flex-start;
     padding-left: 1.8rem;
-    background-image: url(../assets/images/bg-sidebar-desktop.svg);
+    background-image: url(../../images/bg-sidebar-desktop.svg);
     background-position: top;
     row-gap: 0.5rem;
   }
@@ -360,9 +366,6 @@
     cursor: pointer;
     border-color: hsla(243, 100%, 62%, 0.582);
   }
-  .container .container-form .view-form .seccion-add-ons .container-options .background-color-option {
-    background-color: hsla(206, 94%, 87%, 0.226);
-  }
   .container .container-form .view-form .seccion-summary .container-subtotal {
     padding: 1.5rem;
   }
@@ -396,9 +399,6 @@
   .container .container-form .view-form .container-buttons .form-button-black {
     font-size: 1.1rem;
     font-weight: 700;
-  }
-  .container .container-form .view-form .container-buttons .form-button-black:hover {
-    color: var(--Marine_blue);
   }
   .container .container-form .view-form-background-color-transparend {
     background-color: var(--White);

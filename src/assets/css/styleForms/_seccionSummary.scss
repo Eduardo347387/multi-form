@@ -1,0 +1,51 @@
+.seccion-summary {
+    .container-subtotal {
+        display: flex;
+        flex-direction: column;
+        row-gap: .5rem;
+        background-color: hsla(243, 100%, 62%, 0.066);
+        border-radius: .5rem;
+        padding: 1.2rem 1rem;
+
+        .box-subtotal {
+            display: flex;
+
+            .option-text {
+                flex: 1;
+
+                .subtitle-option a {
+                    color: var(--Cool_gray);
+                }
+            }
+
+            .center {
+                margin: auto 0;
+            }
+
+            .fontweight {
+                font-weight: 500;
+                font-size: .8rem;
+            }
+
+            &:nth-child(1) {
+                border-bottom: 1px solid var(--Light_gray);
+                padding-bottom: .6rem;
+            }
+        }
+    }
+
+    .container-total {
+        margin-top: 1.4rem;
+        padding: 0 0.9rem;
+        display: flex;
+
+        .option-text {
+            flex: 1;
+        }
+
+        .title-option {
+            color: var(--Purplish_blue);
+            opacity: 0.9;
+        }
+    }
+}
