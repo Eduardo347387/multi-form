@@ -19,6 +19,10 @@
   font-family: "Ubuntu", sans-serif;
 }
 
+html {
+  font-size: 85%;
+}
+
 .title {
   font-size: 1.6rem;
   color: var(--Marine_blue);
@@ -46,4 +50,24 @@
   display: block;
   font-size: 0.8rem;
   color: var(--Cool_gray);
+}
+
+@media (min-width: 600px) {
+  .title-option {
+    font-size: 1rem;
+  }
+  .subtitle-option {
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 766px) {
+  .title {
+    font-size: 2rem;
+  }
+  .paragraph {
+    font-size: 1.1rem;
+  }
+  .subtitle-option {
+    font-size: 0.94rem;
+  }
 }/*# sourceMappingURL=styles.css.map */

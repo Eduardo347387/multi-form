@@ -32,7 +32,7 @@ export class AppComponent implements OnInit{
 
 	//FORMULARIO GENERAL
 	paso:number = 1
-	
+	nameButton:string = 'Next Step'
 	// your form
 	formInfo: FormGroup
 
@@ -40,7 +40,6 @@ export class AppComponent implements OnInit{
 	displayMes = false
 	isChecked: boolean = false;
 	opcionSeleccionada:number = 1
-	// add-ons
 	// fin formulario
 	sniper: boolean = false;
 	formEnd: boolean = false
@@ -166,6 +165,10 @@ export class AppComponent implements OnInit{
 			this.paso++
 		}
 
+		if (this.paso === 4) {
+			this.nameButton ='Confirm'
+		}
+		
 		if (this.paso === 5) {
 			this.sniper = true
 			setTimeout(() => {
@@ -176,6 +179,9 @@ export class AppComponent implements OnInit{
 	}
 	volver() {
 		this.paso--
+		if (this.paso < 4) {
+			this.nameButton ='Next Step'
+		}
 	}
  
 }
